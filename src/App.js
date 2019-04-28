@@ -11,7 +11,8 @@ class App extends Component{
       periodNo : 0,
       displayDay : 0, 
       displayPeriod : 0,
-      teacherClass : []
+      teacherClass : [],
+      bol : false
     }
   }
   handleChange = (e) => {
@@ -24,21 +25,24 @@ class App extends Component{
     e.preventDefault();
     this.setState({
       displayDay : this.state.dayNo, 
-      displayPeriod : this.state.periodNo
+      displayPeriod : this.state.periodNo,
+      bol : true
     })
   }
-    // handleSubmit2 = (e) => {
-    //   e.preventDefault();
-    //   let x = []
-    //   x.push(this.state.teacherAll+ " "+  this.state.classAll)
-    //   this.setState({
-    //     teacherClass : [...this.state.teacherClass , ...x]
-    //   })
-    // } 
+  handleChange2 = (e) => {
+    const {name , value} = e.target
+    let x = {
+      [name] : value
+    }
+    this.setState({
+      teacherClass : [...this.state.teacherClass , x]
+    })
+  }
 
 
 
   render(){
+    console.log(this.state.teacherClass)
     const day = this.state.day.slice(0 , this.state.displayDay).map(days => {
       return(
         <p style={{border : "1px solid gray", margin : 0}}>{days}</p>
@@ -46,7 +50,7 @@ class App extends Component{
     })
     const period = this.state.period.slice(0 , this.state.displayPeriod).map(period => {
       return(
-        <span style={{border : "1px solid gray"}}> {period} </span>
+        <span className="period" style={{border : "1px solid gray"}}> {period} </span>
       )
     })  
 
@@ -58,14 +62,14 @@ class App extends Component{
       let classAlll = `classAll${m++}`
       return(
         <div>
-                  <div style={{border : "1px solid gray"}}>
-                    <select name={teacherAlll} value={this.state.teacherAlll} onChange={this.handleChange} style={{marginBottom : 15 , width: "100%", border : "none", outline : "none"}}>
+                  <div style={{border : "1px solid gray", overflow : "hidden"}}>
+                    <select name={teacherAlll} value={this.state.teacherAlll} onChange={this.handleChange2} style={{padding: 10 , width: "100%", border : "none", outline : "none"}}>
                       <option>Choose Teacher</option>
                       <option value="teacher1">teacher1</option>
                       <option value="teacher2">teacher2</option>
                     </select>
 
-                    <select name ={classAlll} va lue={this.state.classAlll} onChange={this.handleChange} style={{marginBottom : 15 , width: "100%", border : "none", outline : "none"}}>
+                    <select name ={classAlll} va lue={this.state.classAlll} onChange={this.handleChange2} style={{padding: 10 , width: "100%", border : "none", outline : "none"}}>
                       <option>Choose Class</option>
                       <option value="class1">class1</option>
                       <option value="class2">class2</option>
@@ -74,10 +78,9 @@ class App extends Component{
         </div>
       )
     })
-    console.log(this.state)
     return (
       <div className="App">
-        <form onSubmit={this.handleSubmit} style={{margin : "1em 0"}}>
+        <form onSubmit={this.handleSubmit} style={{margin : "1em 0"}} className="topSelect">
           <select name="dayNo" value={this.state.dayNo} onChange={this.handleChange}>
             <option>Select Day</option>
             <option value="1">Day 1</option>
@@ -102,20 +105,22 @@ class App extends Component{
           <button>Generate</button>
         </form>
 
+        <h1>Class Routine Generator</h1>
 
         <div style={{ display : "grid", gridTemplateColumns : `repeat(${this.state.displayPeriod} , 1fr)` , marginLeft : "5%" , textAlign : "center"}}>
           {period}
         </div>
         <div style={{ display : "grid", gridTemplateColumns : "5% 95%"}}>
-          <div style={{ display : "grid", gridTemplateRows : `repeat(${this.state.displayDay} , 1fr)`}}>
+          <div style={{ display : "grid", gridTemplateRows : `repeat(${this.state.displayDay} , 1fr)`}} className="day">
             {day}
           </div>
           <form onSubmit={this.handleSubmit2} >
-            <div style={{ display : "grid", gridTemplateColumns : `repeat(${this.state.displayPeriod} , 1fr)` , textAlign : "center"}}>
+            <div className="teacher" style={{ display : "grid", gridTemplateColumns : `repeat(${this.state.displayPeriod} , 1fr)` , textAlign : "center"}}>
             {teacher}
             </div>  
           </form> 
         </div>
+        {this.state.bol? <footer>&copy; Developed By Rakib Uddin</footer> : null}
       </div>
     );
   }

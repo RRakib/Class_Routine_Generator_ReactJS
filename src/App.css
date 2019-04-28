@@ -1,32 +1,40 @@
 .App{
   text-align: center;
 }
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.App .day{
+    background: linear-gradient(to bottom, #ffc9a2, #ffdc94)
+}
+.App .teacher{
+    background: linear-gradient(to right, #ffcf9e, #ffdc94);
+}
+.App .period{
+  padding: 10px 0;
+  background: #ffc9a2;
+}
+select{
+  background: transparent;
+  appearance: none;
+}
+.App .topSelect select{
+  width: 20%;
+  border: none;
+  outline: none;
+  margin: 0 15px;
+  font-size: 15px;
+  background: transparent;
+  border-bottom: 2px solid #ff719f;
+}
+.App .topSelect button{
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background: #fff39d;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App footer{
+  color: #333;
+  font-weight: 500;
+  margin-top: 45px;
 }
