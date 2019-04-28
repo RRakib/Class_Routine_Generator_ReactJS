@@ -2,14 +2,14 @@
   text-align: center;
 }
 .App .day{
-    background: linear-gradient(to bottom, #ffc9a2, #ffdc94)
+    background: linear-gradient(to bottom, #ffdbb5, #fff3b5)
 }
 .App .teacher{
-    background: linear-gradient(to right, #ffcf9e, #ffdc94);
+    background: linear-gradient(to right, #ffdbb5, #fff3b5)
 }
 .App .period{
   padding: 10px 0;
-  background: #ffc9a2;
+  background: #ffdbb5;
 }
 select{
   background: transparent;

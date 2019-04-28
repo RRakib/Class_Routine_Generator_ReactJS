@@ -4,7 +4,7 @@ body, html , .App, #root{
   color: #333;
   overflow: hidden;
   font-family: Montserrat;
-  background: linear-gradient(-45deg, #ffb9cf, #fff087)
+  background: linear-gradient(-45deg, #ffc1d5, #fff6b3)
 }
 body {
   margin: 0;
